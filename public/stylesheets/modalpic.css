@@ -1,0 +1,48 @@
+/* The Modal (background) */
+.modal-cert {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.cert {
+  /* background-color: #fefefe; */
+  margin-top: 3em; /* 15% from the top and centered */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  border: 0;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+div.cert > .certificate {
+  width: 70%;
+}
+
+/* The Close Button */
+.close-cert {
+  display: inline-block;
+  position: absolute;
+  top: 7vw;
+  left: 2vw;
+  background: white;
+  color: #aaa;
+  font-size: 64px;
+  font-weight: bold;
+  padding: 5px 2px;
+}
+
+.close-cert:hover,
+.close-cert:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

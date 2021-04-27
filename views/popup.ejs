@@ -1,0 +1,36 @@
+<% layout("layouts/boilerplate") %>
+<div class="popup-form">
+  <form action="/popup" method="POST" novalidate lang="uk">
+    <label class="popup-lable" for="name" data-key="popup-name">Name</label>
+    <input
+      class="popup-inpt"
+      type="text"
+      name="userName"
+      placeholder="Name"
+      id="name"
+      required
+    />
+    <label class="popup-lable" for="email" data-key="popup-email">Email</label>
+    <input
+      class="popup-inpt"
+      type="text"
+      name="email"
+      placeholder="Email"
+      id="email"
+      required
+    />
+    <textarea
+      name="message"
+      class="message"
+      cols="17"
+      rows="5"
+      required
+    ></textarea>
+    <button class="btn-popup" data-key="popup-send">Send</button>
+  </form>
+  <div class="close">
+    <button class="btn-close" data-key="popup-close">Close</button>
+  </div>
+</div>
+
+<script src="/javascripts/validation.js"></script>

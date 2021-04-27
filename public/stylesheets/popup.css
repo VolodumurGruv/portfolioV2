@@ -1,0 +1,225 @@
+.popup {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	margin-top: 4%;
+}
+
+/* The actual popup (appears on top) */
+
+.popup .popuptext {
+	visibility: hidden;
+	width: 360px;
+
+	background-color: rgba(15, 140, 212, 0.8);
+	color: #fff;
+	text-align: center;
+	border-radius: 20px;
+	padding: 8px 0;
+	position: fixed;
+	z-index: 1;
+	top: 5%;
+	left: 40%;
+	/* margin-left: -80px; */
+	/* margin-top: 50px; */
+}
+
+@media (max-width: 600px) {
+	.popup .popuptext {
+		left: 1%;
+	}
+}
+/* Popup arrow */
+
+.popup .popuptext::after {
+	content: "";
+	position: absolute;
+	top: 10%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+
+.popup .show {
+	visibility: visible;
+	-webkit-animation: fadeIn 1s;
+	animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* add my style*/
+.contact {
+	position: fixed;
+	top: 5px;
+	left: 5px;
+}
+
+.popup-form {
+	display: block;
+	width: 100%;
+	cursor: default;
+}
+
+.popup-lable {
+	font-size: 1.1rem;
+	padding: 0;
+	margin: 0;
+}
+
+.popup-inpt {
+	border: 0;
+	border-radius: 5%;
+	padding: 5px;
+	margin: 5px;
+	width: 90%;
+	height: 30px;
+	background: rgba(248, 248, 224, 0.932);
+}
+
+.message {
+	margin-top: 20px;
+	border-radius: 5%;
+	padding: 5px;
+	background: rgba(248, 248, 224, 0.932);
+}
+
+.comment {
+	border: 1px solid rgb(231, 226, 226);
+	height: 100%;
+	margin-bottom: 0;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.author-text > span {
+	float: right;
+	margin-bottom: 0;
+	bottom: 0;
+	font-size: 1rem;
+	color: rgba(88, 85, 85, 0.836);
+}
+
+.btn-popup {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: none;
+	border-radius: 20px;
+	outline: none;
+	padding: 2px 10px;
+	cursor: pointer;
+	font-weight: bold;
+	background-color: transparent;
+	color: #cee3e9;
+	box-shadow: 5px 5px 5px rgba(79, 214, 248, 0.7);
+}
+form .btn-popup {
+	width: 50%;
+}
+.btn-popup:hover {
+	background-color: #306d80dc;
+	color: #fff;
+}
+
+div > .btn-close {
+	border-radius: 20px;
+	width: 50%;
+	cursor: pointer;
+	font-weight: bold;
+	background: rgb(180, 29, 29);
+	color: white;
+	outline: none;
+}
+
+div > .btn-close:hover {
+	background: rgb(235, 8, 8);
+}
+
+.close {
+	margin-top: 10px;
+}
+
+div > .btn-close-popupmsg {
+	width: 25px;
+	height: 25px;
+	text-decoration: none;
+	border: none;
+	border-radius: 7%;
+	display: block;
+	position: relative;
+	margin-left: auto;
+	top: 0;
+	cursor: pointer;
+	font-weight: bold;
+	background: rgb(180, 29, 29);
+	color: white;
+}
+
+.popup-msg {
+	text-align: center;
+	background-color: rgba(85, 179, 85, 0.637);
+}
+
+.popup-msg-text {
+	position: relative;
+	top: 10px;
+	font-size: 18px;
+}
+
+.popup-inpt:focus,
+.message:focus {
+	border: 0;
+	border-bottom: 3px solid rgba(79, 214, 248, 0.7);
+	background: rgba(246, 247, 190, 0.932);
+	outline: none;
+}
+
+.admin {
+	width: 40vw;
+	margin-bottom: 20px;
+}
+
+.admin > input {
+	font-size: 1.7rem;
+}
+
+.mb-3 {
+	margin-bottom: 30px;
+}
+
+.error {
+	border: 2px solid rgba(230, 11, 11, 0.8);
+	border-radius: 7%;
+	box-shadow: rgba(230, 11, 11, 0.8) 5px 5px 5px;
+	/* background: rgba(253, 77, 77, 0.507); */
+}
+
+.success {
+	border: 2px solid rgba(32, 158, 6, 0.8);
+	border-radius: 7%;
+	box-shadow: rgba(32, 158, 6, 0.8) 5px 5px 5px;
+	/* background: rgba(108, 245, 81, 0.4); */
+}
