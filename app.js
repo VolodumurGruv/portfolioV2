@@ -1,17 +1,30 @@
+if (process.env.NODE_ENV !== "production") {
+	require("dotenv").config();
+}
+
 const AppError = require("./utils/error");
 
 const express = require("express"),
-	app = express(),
 	path = require("path"),
 	ejsMate = require("ejs-mate"),
-	session = require("express-session"),
 	flash = require("connect-flash"),
-	passport = require("passport"),
-	LocalStrategy = require("passport-local"),
-	sanitize = require("express-mongo-sanitize"),
 	helmet = require("helmet"),
-	index = require("./routes/index"),
-	Admin = require("./models/admin");
+	session = require("express-session"),
+	mongoose = require("mongoose"),
+	index = require("./routes/index");
+const MongoStore = require("connect-mongo");
+
+const dbUrl = process.env.DB_URL;
+
+mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+	console.log("MongoDB was connected!");
+});
+
+const app = express();
 
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
@@ -19,34 +32,43 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+
+app.use(flash());
+app.use(helmet());
+
+const store = MongoStore.create({
+	mongoUrl: dbUrl,
+});
+
 app.use(
 	session({
-		secret: "somesecret",
-		saveUninitialized: true,
+		secret: "temporary secret word",
+		store,
 		resave: false,
+		saveUninitialized: true,
 		cookie: {
-			expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-			maxAge: 1000 * 60 * 60 * 24 * 7,
+			httpOnly: true,
+			secure: true,
+			maxAge: 12 * 60 * 60,
 		},
 	})
 );
 
-app.use(flash());
-app.use(sanitize());
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(Admin.authenticate()));
-
-passport.serializeUser(Admin.serializeUser());
-passport.deserializeUser(Admin.deserializeUser());
+const fontSrcUrls = [];
 
 app.use(
 	helmet(
 		helmet.contentSecurityPolicy({
 			directives: {
-				"default-src": ["'self'"],
-				"script-src": ["'self'"],
-				"object-src": ["'none'"],
+				defaultSrc: [],
+				connectSrc: ["'self'"],
+				scriptSrc: ["'unsafe-inline'", "'self'"],
+				styleSrc: ["'self'", "'unsafe-inline'"],
+				workerSrc: ["'self'", "blob:"],
+				childSrc: ["blob:"],
+				objectSrc: [],
+				imgSrc: [],
+				fontSrc: ["'self'", ...fontSrcUrls],
 			},
 		})
 	)
@@ -82,7 +104,8 @@ app.use((err, req, res, next) => {
 
 const start = async () => {
 	try {
-		await app.listen(4200, () => console.log("Serve on 4200"));
+		const port = process.env.PORT || 4200;
+		await app.listen(port, () => console.log(`Serve on ${port}`));
 	} catch (e) {
 		console.log(e);
 	}
