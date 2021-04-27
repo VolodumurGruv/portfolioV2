@@ -42,13 +42,13 @@ const store = MongoStore.create({
 
 app.use(
 	session({
-		secret: "temporary secret word",
+		secret: "temporarysecretword",
 		store,
 		resave: false,
 		saveUninitialized: true,
 		cookie: {
 			httpOnly: true,
-			secure: true,
+			// secure: true,
 			maxAge: 12 * 60 * 60,
 		},
 	})
