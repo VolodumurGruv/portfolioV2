@@ -13,6 +13,7 @@ const langData = {
 				"first-eng-text2": "Bootstrap, Materialize ",
 			},
 			second: {
+				"second-name": "Володимир Грушка",
 				"second-myinfo":
 					"Молодший веб-розробник, що спеціалізується на розробці інтерфейсів. Базові та середні знання з декількох мов програмування, включаючи HTML5, JavaScript, CSS3, NodeJS, MySQL, Angular9. Висока здатність до уваги та деталей, вирішенню проблем і досягнення цілей.",
 				"second-myinfo1":
@@ -45,6 +46,7 @@ const langData = {
 				"first-eng-text2": "Bootstrap, Materialize ",
 			},
 			second: {
+				"second-name": "Владимир Грушка",
 				"second-myinfo":
 					"Младший веб-розработчик, который специализируется на розработке интерфейсов. Базовые и середние знания с нескольких языков програмировання, включая HTML5, JavaScript, CSS3, NodeJS, MySQL, Angular9. Высока способность к вниманию и деталям, решению проблем и достижения целей.",
 				"second-myinfo1":
@@ -78,6 +80,7 @@ const langData = {
 				"first-eng-text2": "Bootstrap, Materialize ",
 			},
 			second: {
+				"second-name": "Volodumur Grushka",
 				"second-myinfo":
 					"Junior Web Developer specializing in front-end development. Basic and intermediate knowledge in several programming languages including HTML5, JavaScript, CSS3, NodeJS, MySQL, Angular9. High capacity for attention to detail, problem-solving, and goal achievement.",
 				"second-myinfo1":
