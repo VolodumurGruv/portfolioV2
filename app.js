@@ -13,6 +13,8 @@ const express = require("express"),
 	flash = require("connect-flash"),
 	mongoSanitize = require("express-mongo-sanitize"),
 	MongoStore = require("connect-mongo")(session),
+	passport = require("passport"),
+	LocalStrategy = require("passport-local"),
 	index = require("./routes/index");
 
 const dbUrl = process.env.DB_URL;
@@ -37,7 +39,11 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-app.use(mongoSanitize());
+app.use(
+	mongoSanitize({
+		replaceWith: "_",
+	})
+);
 
 const store = new MongoStore({
 	url: dbUrl,
@@ -61,11 +67,14 @@ app.use(
 
 app.use(flash());
 
-// app.use((req, res, next) => {
-// 	res.locals.post = req.flash("success");
-// 	res.locals.nameErr = req.flash("error");
-// 	next();
-// });
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+	res.locals.post = req.flash("success");
+	res.locals.nameErr = req.flash("error");
+	next();
+});
 
 app.use((req, res, next) => {
 	res.locals.success = req.flash("success");
