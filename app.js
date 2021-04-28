@@ -55,13 +55,15 @@ store.on("error", function (e) {
 	console.log("session store error", e);
 });
 
-app.set("trust proxy", 1);
 app.use(
 	session({
 		store,
 		secret: "itwillbesomesecret",
 		resave: false,
 		saveUninitialized: false,
+		cookie: {
+			secure: true,
+		},
 	})
 );
 
