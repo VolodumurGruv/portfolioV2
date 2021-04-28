@@ -15,6 +15,21 @@ const express = require("express"),
 	passport = require("passport"),
 	index = require("./routes/index");
 
+const dbUrl = process.env.DB_URL;
+
+mongoose.connect(dbUrl, {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+	console.log("Database connected");
+});
+
 const app = express();
 
 app.engine("ejs", ejsMate);

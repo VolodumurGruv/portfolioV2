@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const catchAsync = require("../utils/catchAsync"),
+	msgSchema = require("../models/message"),
 	// mailgun for sending an email
 	API_KEY = process.env.API_KEY,
 	DOMAIN = process.env.DOMAIN,
@@ -24,6 +25,13 @@ module.exports.message = catchAsync(async (req, res, next) => {
 
 	const date = new Date();
 
+	const msgDB = new msgSchema({
+		userName,
+		message,
+		email,
+		date,
+	});
+
 	const msg = {
 		from: `${userName} <${email}>`,
 		to: process.env.EMAIL,
@@ -35,9 +43,8 @@ module.exports.message = catchAsync(async (req, res, next) => {
 		if (error) {
 			console.log("error", error);
 		}
-		console.log(body);
 	});
-
-	console.log("success", "Message was created");
+	await msgDB.save();
+	req.flash("success", "Message was created");
 	res.redirect("/");
 });
