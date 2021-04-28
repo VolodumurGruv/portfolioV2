@@ -146,9 +146,9 @@ form .btn-popup {
 
 div > .btn-close {
 	border-radius: 20px;
+	font-size: 0.7em;
 	width: 50%;
 	cursor: pointer;
-	font-weight: bold;
 	background: rgb(180, 29, 29);
 	color: white;
 	outline: none;

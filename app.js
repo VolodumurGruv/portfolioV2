@@ -12,24 +12,8 @@ const express = require("express"),
 	session = require("express-session"),
 	flash = require("connect-flash"),
 	mongoSanitize = require("express-mongo-sanitize"),
-	MongoStore = require("connect-mongo")(session),
 	passport = require("passport"),
-	LocalStrategy = require("passport-local"),
 	index = require("./routes/index");
-
-const dbUrl = process.env.DB_URL;
-mongoose.connect(dbUrl, {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true,
-	useFindAndModify: false,
-});
-
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-	console.log("Database connected");
-});
 
 const app = express();
 
