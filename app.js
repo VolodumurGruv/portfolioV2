@@ -55,17 +55,21 @@ store.on("error", function (e) {
 	console.log("session store error", e);
 });
 
-app.use(
-	session({
-		store,
-		secret: "itwillbesomesecret",
-		resave: false,
-		saveUninitialized: false,
-		cookie: {
-			secure: true,
-		},
-	})
-);
+const sessionConfig = {
+	store,
+	name: "session",
+	secret: "itshoulbesomesecret",
+	resave: false,
+	saveUninitialized: true,
+	cookie: {
+		// httpOnly: true,
+		secure: true,
+		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+		maxAge: 1000 * 60 * 60 * 24 * 7,
+	},
+};
+
+app.use(session(sessionConfig));
 
 app.use(flash());
 
