@@ -38,6 +38,6 @@ module.exports.message = catchAsync(async (req, res, next) => {
 		console.log(body);
 	});
 
-	console.log("success", "Message was created");
+	req.flash("success");
 	res.redirect("/");
 });

@@ -3,13 +3,18 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const AppError = require("./utils/error");
-
+const { Firestore } = require("@google-cloud/firestore");
+const { Storage } = require("@google-cloud/storage");
 const express = require("express"),
 	path = require("path"),
 	ejsMate = require("ejs-mate"),
 	helmet = require("helmet"),
-	mongoose = require("mongoose"),
+	session = require("express-session"),
+	flash = require("connect-flash"),
 	index = require("./routes/index");
+
+const { FirestoreStore } = require("@google-cloud/connect-firestore");
+const storage = new Storage();
 
 const app = express();
 
@@ -19,6 +24,23 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+
+app.use(
+	session({
+		store: new FirestoreStore({
+			dataset: new Firestore(),
+			kind: "express-sessions",
+		}),
+		secret: "itwillbesomesecretword",
+		resave: false,
+		saveUninitialized: true,
+		cookie: {
+			httpOnly: true,
+		},
+	})
+);
+
+app.use(flash());
 
 app.use(helmet());
 
@@ -42,6 +64,12 @@ app.use(
 	)
 );
 
+app.use((req, res, next) => {
+	res.locals.currentUser = req.user;
+	res.locals.success = req.flash("success");
+	res.locals.error = req.flash("error");
+	next();
+});
 //routers
 
 app.use("/", index);
