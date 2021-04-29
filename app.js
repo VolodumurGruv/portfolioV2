@@ -46,11 +46,15 @@ app.use(
 
 app.use(
 	session({
+		name: "session",
 		secret: "itwillbesomesecret",
 		resave: false,
-		saveUninitialized: false,
+		saveUninitialized: true,
 		cookie: {
-			secure: true,
+			httpOnly: true,
+			// secure: true,
+			expires: Date().now + 12 * 3600,
+			maxAge: 12 * 3600,
 		},
 	})
 );

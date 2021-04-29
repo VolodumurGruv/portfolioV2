@@ -1,7 +1,7 @@
 * {
 	font-family: "Roboto Slab", serif;
 	font-weight: 500;
-	font-size: 1.3rem;
+	font-size: 1em;
 	line-height: 1.5;
 }
 
@@ -160,14 +160,16 @@ section {
 	width: 100%;
 }
 
-
-
 @media (max-width: 1000px) {
+	.first > div {
+		margin-top: 80px;
+	}
 	.first > div,
 	.second > div {
 		width: 100%;
 		height: auto;
 		overflow-y: auto;
+		font-size: 0.7em;
 	}
 	.prev,
 	.next {

@@ -21,10 +21,10 @@ module.exports.popup = (req, res) => {
 };
 
 module.exports.message = catchAsync(async (req, res, next) => {
-	const { userName, message, email } = req.body;
+	let { userName, message, email } = req.body;
 
 	const date = new Date();
-
+	email = email.toLowerCase().trim();
 	const msgDB = new msgSchema({
 		userName,
 		message,
