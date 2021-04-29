@@ -164,6 +164,7 @@ section {
 	.first > div {
 		margin-top: 80px;
 	}
+
 	.first > div,
 	.second > div {
 		width: 100%;
