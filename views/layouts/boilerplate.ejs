@@ -8,12 +8,7 @@
 		<!-- GOOGLEFONTS -->
 		<link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="preconnect" href="https://fonts.gstatic.com" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap"
 			rel="stylesheet"
 		/>
 		<!-- MY STYLE -->
@@ -26,7 +21,7 @@
 		<link rel="stylesheet" href="/stylesheets/alert.css" />
 	</head>
 	<body>
-		<%-body%>
+		<%- include('../partials/flash')%> <%-body%>
 		<footer><%- include("../partials/footer") %></footer>
 		<script src="/javascripts/alert.js"></script>
 	</body>

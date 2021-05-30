@@ -1,0 +1,4 @@
+DB_URL=mongodb+srv://mongoTest:GQY1urSrAxlP0CCl@cluster0.yguuy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+API_KEY=key-3fc9c86f0153dbb7e1e0a9d9b826c4d7
+DOMAIN=https://api.mailgun.net/v3/sandbox0c1e3bd1aa524ecf934183ed3b4f1d63.mailgun.org
+EMAIL=grushvolo@gmail.com

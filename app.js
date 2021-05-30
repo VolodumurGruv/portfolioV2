@@ -5,12 +5,28 @@ if (process.env.NODE_ENV !== "production") {
 const AppError = require("./utils/error");
 
 const express = require("express"),
+	mongoose = require("mongoose"),
 	path = require("path"),
 	ejsMate = require("ejs-mate"),
 	helmet = require("helmet"),
 	session = require("express-session"),
 	flash = require("connect-flash"),
 	index = require("./routes/index");
+
+const dbUrl = process.env.DB_URL;
+
+mongoose.connect(dbUrl, {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+	console.log("Database connected");
+});
 
 const app = express();
 
@@ -20,6 +36,11 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(
+	mongoSanitize({
+		replaceWith: "_",
+	})
+);
 
 app.use(
 	session({

@@ -1,7 +1,7 @@
 * {
-	font-family: "Dancing Script", cursive;
+	font-family: "Roboto Slab", serif;
 	font-weight: 500;
-	font-size: 1.3rem;
+	font-size: 1.1rem;
 	line-height: 1.5;
 }
 
@@ -53,10 +53,7 @@ section {
 }
 
 .bold-span {
-	font-family: "Akaya Telivigala", cursive;
-	font-weight: bold;
-	font-size: 1.4rem;
-	color: #306d80;
+	font-size: 1em;
 }
 .first > div,
 .second > div {
@@ -64,7 +61,8 @@ section {
 	width: 60%;
 	margin-left: auto;
 	margin-right: auto;
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.7);
+	box-shadow: 7px 7px 5px rgba(78, 73, 73, 0.76);
 	border-radius: 20px;
 	color: #d3eaf0;
 }
@@ -73,7 +71,7 @@ section {
 	border-radius: 20px;
 	padding: 3px 10px;
 	color: #d3eaf0;
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.7);
 }
 .third > div,
 .fourth > div,
@@ -145,11 +143,12 @@ section {
 }
 
 .myexamples > h1 {
+	width: auto;
 	text-align: center;
 	border-radius: 20px;
 	padding: 3px 10px;
 	color: #d3eaf0;
-	background: rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .fourth-img {
@@ -162,11 +161,16 @@ section {
 }
 
 @media (max-width: 1000px) {
+	.first > div {
+		margin-top: 80px;
+	}
+
 	.first > div,
 	.second > div {
 		width: 100%;
 		height: auto;
 		overflow-y: auto;
+		font-size: 0.7em;
 	}
 	.prev,
 	.next {
