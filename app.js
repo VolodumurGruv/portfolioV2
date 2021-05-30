@@ -3,8 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const AppError = require("./utils/error");
-const { Firestore } = require("@google-cloud/firestore");
-const { Storage } = require("@google-cloud/storage");
+
 const express = require("express"),
 	path = require("path"),
 	ejsMate = require("ejs-mate"),
@@ -12,9 +11,6 @@ const express = require("express"),
 	session = require("express-session"),
 	flash = require("connect-flash"),
 	index = require("./routes/index");
-
-const { FirestoreStore } = require("@google-cloud/connect-firestore");
-const storage = new Storage();
 
 const app = express();
 
@@ -27,19 +23,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
 	session({
-		store: new FirestoreStore({
-			dataset: new Firestore(),
-			kind: "express-sessions",
-		}),
-		secret: "itwillbesomesecretword",
-		resave: false,
+		secret: "itwillbesomesecretinthefuture",
 		saveUninitialized: true,
-		cookie: {
-			httpOnly: true,
-		},
+		resave: false,
 	})
 );
-
 app.use(flash());
 
 app.use(helmet());
