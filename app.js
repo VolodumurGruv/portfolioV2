@@ -6,12 +6,13 @@ const AppError = require("./utils/error");
 
 const express = require("express"),
 	mongoose = require("mongoose"),
-	path = require("path"),
-	ejsMate = require("ejs-mate"),
-	helmet = require("helmet"),
-	session = require("express-session"),
-	flash = require("connect-flash"),
-	index = require("./routes/index");
+	mongoSanitize = require("express-mongo-sanitize");
+(path = require("path")),
+	(ejsMate = require("ejs-mate")),
+	(helmet = require("helmet")),
+	(session = require("express-session")),
+	(flash = require("connect-flash")),
+	(index = require("./routes/index"));
 
 const dbUrl = process.env.DB_URL;
 
